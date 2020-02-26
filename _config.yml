@@ -1,9 +1,9 @@
 # Site settings
-title: 百里浮光
+title: Haoyue Blog
 SEOTitle: 皓月的博客 | Haoyue Blog
 header-img: img/post-bg-desk.jpg
 email: qiubaiying@gmail.com
-description: "钟期既遇，奏流水以何惭?"
+description: "AAA钟期既遇，奏流水以何惭?"
 keyword: "Haoyue, Haoyue Blog, 皓月的博客"
 url: "http://jhyalex.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
