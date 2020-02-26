@@ -11,7 +11,7 @@ github_repo: "https://github.com/jhyalex/jhyalex.github.io.git" # you code repos
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "Stay calm, stay cool"
+sidebar-about-description: "Graduate student in W&M"
 sidebar-avatar: /img/Haoyue.jpg    # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
@@ -21,8 +21,8 @@ RSS: false
 
 zhihu_username:     hao-yue-70
 github_username:    jhyalex
-#facebook_username:  
-#twitter_username:   qiubaiying
+linkedln_username: haoyue-jiang-968a441a2
+
 
 
 
@@ -98,13 +98,13 @@ service-worker: true
 # Friends
 friends: [
     {
-       title: "WM",
+       title: "W&M",
        href: "https://www.wm.edu/"
     },{
-        title: "Apple",
-        href: "https://apple.com"
+        title: "Scholar",
+        href: "https://scholar.google.com/"
     },{
-        title: "Apple Developer",
-        href: "https://developer.apple.com/"
+        title: "SUSTech",
+        href: "https://www.sustech.edu.cn/en/"
     }
 ]
