@@ -1,6 +1,6 @@
 # Site settings
 title: Haoyue Blog
-description: "Hey, this is Haoyue."
+description: Hey, this is Haoyue.
 SEOTitle: 皓月的博客 | Haoyue Blog
 header-img: img/HY-home-backgroud.jpg
 email: haoyue.work@gmail.com
@@ -101,10 +101,10 @@ friends: [
        title: "W&M",
        href: "https://www.wm.edu/"
     },{
-        title: "Joey",
-        href: "https://jwang169.github.io/junzhe.wang/templates/cmd.html#"
-    },{
         title: "SUSTech",
         href: "https://www.sustech.edu.cn/en/"
+    },{
+        title: "Joey",
+        href: "https://jwang169.github.io/junzhe.wang/templates/cmd.html#"      
     }
 ]
