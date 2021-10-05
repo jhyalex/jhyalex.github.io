@@ -98,16 +98,10 @@ service-worker: true
 # Friends
 friends: [
     {
-       title: "W&M",
-       href: "https://www.wm.edu/"
-    },{
-        title: "SUSTech",
-        href: "https://www.sustech.edu.cn/en/"
+       title: "Yishu Xue",
+       href: "https://yxue-me.com"
     },{
         title: "Joey",
         href: "https://jwang169.github.io/junzhe.wang/templates/cmd.html#"      
-    },{
-        title: "Curt",
-        href: "https://suny-dan.github.io/"
     }
 ]
