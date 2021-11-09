@@ -101,10 +101,13 @@ friends: [
        title: "Yishu Xue",
        href: "https://yxue-me.com"
     },{
-        title: "Joey",
-        href: "https://jwang169.github.io/junzhe.wang/templates/cmd.html#"      
+        title: "Junzhe Wang",
+        href: "https://jwang169.github.io/junzhe.wang/"      
     },{
         title: "Xiaoyan Qiu",
         href: "https://www.xiaoyanqiu.net"
+    },{
+        title: "Lishan Yang",
+        href: "https://www.cs.wm.edu/~lyang11/"
     }
 ]
