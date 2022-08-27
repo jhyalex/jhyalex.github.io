@@ -1,4 +1,4 @@
-
+谢谢柏荧同学的项目，我借来快速写个我的个人故事博客。
 
 ![](https://raw.githubusercontent.com/qiubaiying/qiubaiying.github.io/master/img/readme-home.png)
 
