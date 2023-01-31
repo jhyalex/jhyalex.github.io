@@ -1,4 +1,15 @@
-谢谢柏荧同学的项目，我借来快速写个我的个人故事博客。
+谢谢柏荧同学的项目，我借来快速写个我的个人故事博客。lol
+
+
+
+
+
+
+
+
+
+
+以下是他的一些博客搭建教程：）
 
 ![](https://raw.githubusercontent.com/qiubaiying/qiubaiying.github.io/master/img/readme-home.png)
 
