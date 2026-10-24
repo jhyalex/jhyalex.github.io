@@ -1,27 +1,27 @@
 # Site settings
-title: Haoyue Blog
-description: Hey, this is Haoyue.
-SEOTitle: 皓月的博客 | Haoyue Blog
-header-img: img/HY-home-backgroud.jpg
-email: haoyue.mylife@gmail.com
-keyword: Haoyue, Haoyue Blog, 皓月的博客
-url: "http://jhyalex.github.io"          # your host, for absolute URL
+title: 浮光
+description: 浮光的文学札记：小说、随笔、音乐与生活。
+SEOTitle: 浮光 | 文学札记
+header-img: img/home-bg-art.jpg
+email: 
+keyword: 浮光, 文学, 小说, 随笔, 音乐
+url: "https://jhyalex.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
 github_repo: "https://github.com/jhyalex/jhyalex.github.io.git" # you code repository
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "Graduate student in W&M"
-sidebar-avatar: /img/Haoyue.jpg    # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-about-description: "浮光跃金，静影沉璧。"
+sidebar-avatar:     # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
 
 # SNS settings
 RSS: false
 
-zhihu_username:     hao-yue-70
-github_username:    jhyalex
-linkedin_username: haoyue-jiang-968a441a2
+zhihu_username: 
+github_username: 
+linkedin_username: 
 
 
 
@@ -73,10 +73,10 @@ gitalk:
 
 # Analytics settings
 # Baidu Analytics
-ba_track_id: b50bf2b12b5338a1845e33832976fd68
+ba_track_id: 
 
 # Google Analytics
-ga_track_id: 'UA-90855596-1'            # Format: UA-xxxxxx-xx
+ga_track_id:             # Format: UA-xxxxxx-xx
 #ga_domain: qiubaiying.top               # 默认的是 auto, 这里我是自定义了的域名，你如果没有自己的域名，需要改成auto
 
 
@@ -95,19 +95,5 @@ service-worker: true
 
 
 
-# Friends
-friends: [
-    {
-       title: "Yishu Xue",
-       href: "https://yxue-me.com"
-    },{
-        title: "Junzhe Wang",
-        href: "https://jwang169.github.io/junzhe.wang/"      
-    },{
-        title: "Xiaoyan Qiu",
-        href: "https://www.xiaoyanqiu.net"
-    },{
-        title: "Lishan Yang",
-        href: "https://www.cs.wm.edu/~lyang11/"
-    }
-]
+# Friend links removed from the public sidebar to keep the literary identity separate.
+friends: []
