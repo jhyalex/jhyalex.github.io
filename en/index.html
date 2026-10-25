@@ -1,0 +1,14 @@
+---
+layout: page
+lang: en
+page_number: 1
+nav_exclude: true
+permalink: /en/
+---
+{% include i18n.html %}
+{% for post in site.posts limit:10 offset:0 %}
+{% include post-preview.html %}
+{% endfor %}
+<ul class="pager">
+<li class="next"><a href="{{ site.baseurl }}/en/page2/">{{ ui.older }} &rarr;</a></li>
+</ul>

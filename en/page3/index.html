@@ -1,0 +1,14 @@
+---
+layout: page
+lang: en
+page_number: 3
+nav_exclude: true
+permalink: /en/page3/
+---
+{% include i18n.html %}
+{% for post in site.posts limit:10 offset:20 %}
+{% include post-preview.html %}
+{% endfor %}
+<ul class="pager">
+<li class="previous"><a href="{{ site.baseurl }}/en/page2/">&larr; {{ ui.newer }}</a></li>
+</ul>

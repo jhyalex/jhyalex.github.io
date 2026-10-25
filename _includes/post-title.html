@@ -1,0 +1,1 @@
+{%- assign title_key = site.data.translation_keys[include.post.path] -%}{%- if english and title_key -%}{{ site.data.en[title_key].title | escape }}{%- else -%}{{ include.post.title | escape }}{%- endif -%}

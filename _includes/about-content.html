@@ -1,0 +1,75 @@
+{% include language-switch.html %}
+{% if english %}
+<div class="en post-container">
+<blockquote><p>Without meeting Yang Yi, I stroke my cloud-soaring verse and pity myself;<br>Having met Zhong Ziqi, why be ashamed to play “Flowing Water”?</p></blockquote>
+<p>Hello, I’m <strong>Fuguang</strong>. Here I collect fiction, essays, and inspiration occasionally picked up from life.</p>
+<p>Outside work and study, I like reading books I don’t remember adding to my reading list and have only read the beginning of; playing the violin I’ve studied for ten years and still can’t play in an ensemble; and sending friends postcards covered in rambling thoughts. I appear at random in the final hour of a book fair, directly in front of the concertmaster at a concert, in a cinema corner where a socially anxious person can secretly shed tears alone, or by the sea where I can chat with seagulls. Occasionally I also copy a little code pre-chewed by ChatGPT. You’re welcome to come chat on my blog.</p>
+<p>I like reading, music, travel, and writing postcards to friends. Welcome to meeting these words here.</p>
+<hr>
+<p><small>Translator’s note: The opening couplet is from Wang Bo’s <em>Preface to the Pavilion of Prince Teng</em>. Yang Yi appreciated Sima Xiangru’s writing; Zhong Ziqi understood the music of his friend Boya. The “cloud-soaring” verse refers to Sima Xiangru’s writing; “Flowing Water” retains the musical allusion.</small></p>
+</div>
+{% else %}
+<!-- Chinese Version -->
+<div class="zh post-container">
+
+    <!--copied from markdown -->
+    <blockquote><p>杨意不逢 抚凌云而自惜<br>
+    钟期既遇 奏流水以何惭</p></blockquote>
+
+    <p>你好，我是<strong>浮光</strong>。这里收录小说、随笔，以及偶尔从生活里拾起的灵感。</p>
+
+    <p>工作、学习之余，我喜欢读不知道什么时候加入书单并且只读了一个开头的书，拉学了十年依然无法合奏的小提琴，给朋友寄写满碎碎念的明信片。随机掉落在书展的最后一个小时，音乐会的首席小提琴的正前方，电影院适合社恐一个人偷偷摸摸掉眼泪的角落，可以和海鸥聊天的海边。偶尔也会抄点chagpt咀嚼好的代码，欢迎来我的博客交流。</p>
+
+
+    <p></p>
+
+    <p>喜欢读书、音乐、旅行，也喜欢给朋友写明信片。欢迎在这里遇见这些文字。</p>
+</div>
+
+{% endif %}
+<!-- Gitalk 评论 start  -->
+{% if site.gitalk.enable %}
+<!-- Gitalk link  -->
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+    <script type="text/javascript">
+    var gitalk = new Gitalk({
+    clientID: '{{site.gitalk.clientID}}',
+    clientSecret: '{{site.gitalk.clientSecret}}',
+    repo: '{{site.gitalk.repo}}',
+    owner: '{{site.gitalk.owner}}',
+    admin: ['{{site.gitalk.admin}}'],
+    distractionFreeMode: {{site.gitalk.distractionFreeMode}},
+    id: 'about',
+    });
+    gitalk.render('gitalk-container');
+</script>
+{% endif %}
+<!-- Gitalk end -->
+
+ <!-- disqus 评论框 start  -->
+{% if site.disqus.enable %}
+
+<div class="comment">
+    <div id="disqus_thread" class="disqus-thread">
+    </div>
+</div>
+<!-- disqus 评论框 end -->
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "{{site.disqus.username}}";
+    var disqus_identifier = "{{site.disqus.username}}/{{page.url}}";
+    var disqus_url = "{{site.url}}{{page.url}}";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+{% endif %}

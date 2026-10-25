@@ -6,8 +6,8 @@
  * Register service worker.
  * ========================================================== */
 
-const PRECACHE = 'precache-v1';
-const RUNTIME = 'runtime';
+const PRECACHE = 'precache-bilingual-v1';
+const RUNTIME = 'runtime-bilingual-v1';
 const HOSTNAME_WHITELIST = [
   self.location.hostname,
   "huangxuan.me",
@@ -79,7 +79,7 @@ const getRedirectUrl = (req) => {
 self.addEventListener('install', e => {
   e.waitUntil(
     caches.open(PRECACHE).then(cache => {
-      return cache.add('offline.html')
+      return cache.addAll(['/offline.html', '/en/offline.html'])
       .then(self.skipWaiting())
       .catch(err => console.log(err))
     })
@@ -95,7 +95,12 @@ self.addEventListener('install', e => {
  */
 self.addEventListener('activate',  event => {
   console.log('service worker activated.')
-  event.waitUntil(self.clients.claim());
+  event.waitUntil(
+    caches.keys().then(keys => Promise.all(
+      keys.filter(key => key === 'precache-v1' || key === 'runtime')
+        .map(key => caches.delete(key))
+    )).then(() => self.clients.claim())
+  );
 });
 
 
@@ -123,7 +128,7 @@ self.addEventListener('fetch', event => {
     // Stale-while-revalidate 
     // similar to HTTP's stale-while-revalidate: https://www.mnot.net/blog/2007/12/12/stale
     // Upgrade from Jake's to Surma's: https://gist.github.com/surma/eb441223daaedf880801ad80006389f1
-    const cached = caches.match(event.request);
+    const cached = caches.open(RUNTIME).then(cache => cache.match(event.request));
     const fixedUrl = getFixedUrl(event.request);
     const fetched = fetch(fixedUrl, {cache: "no-store"});
     const fetchedCopy = fetched.then(resp => resp.clone());
@@ -135,7 +140,7 @@ self.addEventListener('fetch', event => {
     event.respondWith(
       Promise.race([fetched.catch(_ => cached), cached])
         .then(resp => resp || fetched)
-        .catch(_ => caches.match('offline.html'))
+        .catch(_ => caches.match(new URL(event.request.url).pathname.startsWith('/en/') ? '/en/offline.html' : '/offline.html'))
     );
 
     // Update the cache with the version we fetched (only for ok status)

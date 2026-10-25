@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+{% include i18n.html %}
+<html lang="{% if english %}en{% else %}zh-CN{% endif %}">
 
 {% include head.html %}
 

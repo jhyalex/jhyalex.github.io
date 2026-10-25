@@ -4,12 +4,12 @@
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header page-scroll">
             <button type="button" class="navbar-toggle">
-                <span class="sr-only">Toggle navigation</span>
+                <span class="sr-only">{{ ui.nav_toggle }}</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ site.baseurl }}/">{{ site.title }}</a>
+            <a class="navbar-brand" href="{{ site.baseurl }}{{ language_prefix }}/">{{ ui.site_title }}</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -17,13 +17,11 @@
             <div class="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="{{ site.baseurl }}/">Home</a>
+                        <a href="{{ site.baseurl }}{{ language_prefix }}/">{{ ui.home }}</a>
                     </li>
-                    {% for page in site.pages %}{% if page.title %}
-                    <li>
-                        <a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
-                    </li>
-                    {% endif %}{% endfor %}
+                    <li><a href="{{ site.baseurl }}{{ language_prefix }}/about/">{{ ui.about }}</a></li>
+                    <li><a href="{{ site.baseurl }}{{ language_prefix }}/tags/">{{ ui.tags }}</a></li>
+                    <li>{% include language-switch.html %}</li>
                 </ul>
             </div>
         </div>

@@ -1,0 +1,1 @@
+{%- assign link_key = site.data.translation_keys[include.post.path] -%}{%- if english and link_key -%}{{ site.baseurl }}/en/posts/{{ link_key }}/{%- else -%}{{ include.post.url | prepend: site.baseurl }}{%- endif -%}

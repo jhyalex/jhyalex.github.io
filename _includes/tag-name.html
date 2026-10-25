@@ -1,0 +1,1 @@
+{%- if english -%}{{ site.data.tags_en[include.tag] | default: include.tag | escape }}{%- else -%}{{ include.tag | escape }}{%- endif -%}

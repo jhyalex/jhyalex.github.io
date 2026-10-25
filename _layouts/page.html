@@ -1,6 +1,7 @@
 ---
 layout: default
 ---
+{% include i18n.html %}
 
 <!-- Page Header -->
 <header class="intro-header" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
@@ -8,9 +9,9 @@ layout: default
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
                 <div class="site-heading">
-                    <h1>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
+                    <h1>{% if page.title == 'About' %}{{ ui.about }}{% elsif page.title %}{{ page.title }}{% else %}{{ ui.site_title }}{% endif %}</h1>
                     <!--<hr class="small">-->
-                    <span class="subheading">{{ page.description }}</span>
+                    <span class="subheading">{% if page.title == 'About' %}{{ ui.sidebar }}{% else %}{{ ui.tagline }}{% endif %}</span>
                 </div>
             </div>
         </div>
@@ -19,7 +20,7 @@ layout: default
 
 <!-- Main Content -->
 <div class="container">
-	<div class="row">
+    <div class="row">
         {% if site.sidebar == false %}
 <!-- NO SIDEBAR -->
     <!-- PostList Container -->
@@ -36,23 +37,23 @@ layout: default
                 {% if site.featured-tags %}
                 <section>
                     <!-- no hr -->
-                    <h5><a href="{{'/tags/' | prepend: site.baseurl }}">FEATURED TAGS</a></h5>
+                    <h5><a href="{{ site.baseurl }}{{ language_prefix }}/tags/">{{ ui.featured_tags }}</a></h5>
                     <div class="tags">
-        				{% for tag in site.tags %}
-                            {% if tag[1].size > {{site.featured-condition-size}} %}
-                				<a href="{{ site.baseurl }}/tags/#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
-                                    {{ tag[0] }}
+                        {% for tag in site.tags %}{% assign tag_name = tag[0] %}
+                            {% if tag[1].size > site.featured-condition-size %}
+                                <a href="{{ site.baseurl }}{{ language_prefix }}/tags/#{{ tag[0] }}" title="{% include tag-name.html tag=tag_name %}" rel="{{ tag[1].size }}">
+                                    {% include tag-name.html tag=tag_name %}
                                 </a>
                             {% endif %}
-        				{% endfor %}
-        			</div>
+                        {% endfor %}
+                    </div>
                 </section>
                 {% endif %}
 
                 <!-- Friends Blog -->
                 {% if site.friends %}
                 <hr>
-                <h5>FRIENDS</h5>
+                <h5>{{ ui.friends }}</h5>
                 <ul class="list-inline">
                     {% for friend in site.friends %}
                         <li><a href="{{friend.href}}">{{friend.title}}</a></li>
@@ -64,15 +65,15 @@ layout: default
 
 <!-- USE SIDEBAR -->
     <!-- PostList Container -->
-    		<div class="
+            <div class="
                 col-lg-8 col-lg-offset-1
                 col-md-8 col-md-offset-1
                 col-sm-12
                 col-xs-12
                 postlist-container
             ">
-    			{{ content }}
-    		</div>
+                {{ content }}
+            </div>
     <!-- Sidebar Container -->
             <div class="
                 col-lg-3 col-lg-offset-0
@@ -85,12 +86,12 @@ layout: default
                 {% if site.featured-tags %}
                 <section>
                     <hr class="hidden-sm hidden-xs">
-                    <h5><a href="{{'/tags/' | prepend: site.baseurl }}">FEATURED TAGS</a></h5>
+                    <h5><a href="{{ site.baseurl }}{{ language_prefix }}/tags/">{{ ui.featured_tags }}</a></h5>
                     <div class="tags">
-                        {% for tag in site.tags %}
-                            {% if tag[1].size > {{site.featured-condition-size}} %}
-                                <a href="{{ site.baseurl }}/tags/#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
-                                    {{ tag[0] }}
+                        {% for tag in site.tags %}{% assign tag_name = tag[0] %}
+                            {% if tag[1].size > site.featured-condition-size %}
+                                <a href="{{ site.baseurl }}{{ language_prefix }}/tags/#{{ tag[0] }}" title="{% include tag-name.html tag=tag_name %}" rel="{{ tag[1].size }}">
+                                    {% include tag-name.html tag=tag_name %}
                                 </a>
                             {% endif %}
                         {% endfor %}
@@ -100,15 +101,15 @@ layout: default
 
                 <!-- Short About -->
                 <section class="visible-md visible-lg">
-                    <hr><h5><a href="{{'/about/' | prepend: site.baseurl }}">ABOUT ME</a></h5>
+                    <hr><h5><a href="{{ site.baseurl }}{{ language_prefix }}/about/">{{ ui.about_me }}</a></h5>
                     <div class="short-about">
                         {% if site.sidebar-avatar %}
-                            <a href="{{ site.baseurl }}/about">
+                            <a href="{{ site.baseurl }}{{ language_prefix }}/about">
                                 <img src="{{site.sidebar-avatar}}"/>
                             </a>
                         {% endif %}
                         {% if site.sidebar-about-description %}
-                            <p>{{site.sidebar-about-description}}</p>
+                            <p>{{ ui.sidebar }}</p>
                         {% endif %}
                         <!-- SNS Link -->
                         <ul class="list-inline">
@@ -193,14 +194,14 @@ layout: default
                 <!-- Friends Blog -->
                 {% if site.friends %}
                 <hr>
-                <h5>FRIENDS</h5>
+                <h5>{{ ui.friends }}</h5>
                 <ul class="list-inline">
                     {% for friend in site.friends %}
                         <li><a href="{{friend.href}}">{{friend.title}}</a></li>
                     {% endfor %}
                 </ul>
                 {% endif %}
-    		</div>
+            </div>
         {% endif %}
-	</div>
+    </div>
 </div>
