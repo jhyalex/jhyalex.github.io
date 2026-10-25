@@ -1,24 +1,25 @@
 ---
 layout: default
 ---
+{% include i18n.html %}
 
 <!-- Image to hack wechat -->
 <!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
-<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if article.header-img %}{{ article.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
 
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
         position: relative;
-        background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')
+        background-image: url('{{ site.baseurl }}/{% if article.header-img %}{{ article.header-img }}{% else %}{{ site.header-img }}{% endif %}')
     }
 
-    {% if page.header-mask %}
+    {% if article.header-mask %}
     header.intro-header .header-mask{
         width: 100%;
         height: 100%;
         position: absolute;
-        background: rgba(0,0,0, {{ page.header-mask }});
+        background: rgba(0,0,0, {{ article.header-mask }});
     }
     {% endif %}
 </style>
@@ -29,18 +30,18 @@ layout: default
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-heading">
                     <div class="tags">
-                        {% for tag in page.tags %}
-                        <a class="tag" href="{{ site.baseurl }}/tags/#{{ tag }}" title="{{ tag }}">{{ tag }}</a>
+                        {% for tag in article.tags %}
+                        <a class="tag" href="{{ site.baseurl }}{{ language_prefix }}/tags/#{{ tag }}" title="{% include tag-name.html tag=tag %}">{% include tag-name.html tag=tag %}</a>
                         {% endfor %}
                     </div>
-                    <h1>{{ page.title }}</h1>
+                    <h1>{% include post-title.html post=article %}</h1>
                     {% comment %}
                         always create a h2 for keeping the margin , Hux
                     {% endcomment %}
-                    {% comment %} if page.subtitle {% endcomment %}
-                    <h2 class="subheading">{{ page.subtitle }}</h2>
+                    {% comment %} if article.subtitle {% endcomment %}
+                    <h2 class="subheading">{% if english %}{{ en_post.subtitle | escape }}{% else %}{{ article.subtitle }}{% endif %}</h2>
                     {% comment %} endif {% endcomment %}
-                    <span class="meta">Posted by {% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %} on {{ page.date | date: "%B %-d, %Y" }}</span>
+                    <span class="meta">{{ ui.posted_by }} {% if article.author %}{% if english and article.author == '浮光' %}Fuguang{% else %}{{ article.author }}{% endif %}{% else %}{{ ui.site_title }}{% endif %} {{ ui.on }} {{ article.date | date: "%B %-d, %Y" }}</span>
                 </div>
             </div>
         </div>
@@ -58,24 +59,25 @@ layout: default
                 col-md-10 col-md-offset-1
                 post-container">
 
-				{{ content }}
+                {% include language-switch.html %}
+                {% if english %}{{ en_post.body | markdownify }}{% else %}{{ content }}{% endif %}
 
                 <hr style="visibility: hidden;">
 
                 <ul class="pager">
-                    {% if page.previous.url %}
+                    {% if article.previous.url %}
                     <li class="previous">
-                        <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">
-                        Previous<br>
-                        <span>{{page.previous.title}}</span>
+                        <a href="{% include post-url.html post=article.previous %}" data-toggle="tooltip" data-placement="top" title="{% include post-title.html post=article.previous %}">
+                        {{ ui.previous }}<br>
+                        <span>{% include post-title.html post=article.previous %}</span>
                         </a>
                     </li>
                     {% endif %}
-                    {% if page.next.url %}
+                    {% if article.next.url %}
                     <li class="next">
-                        <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}">
-                        Next<br>
-                        <span>{{page.next.title}}</span>
+                        <a href="{% include post-url.html post=article.next %}" data-toggle="tooltip" data-placement="top" title="{% include post-title.html post=article.next %}">
+                        {{ ui.next }}<br>
+                        <span>{% include post-title.html post=article.next %}</span>
                         </a>
                     </li>
                     {% endif %}
@@ -117,7 +119,7 @@ layout: default
             </div>  
 
     <!-- Side Catalog Container -->
-        {% if page.catalog %}
+        {% if article.catalog %}
             <div class="
                 col-lg-2 col-lg-offset-0
                 visible-lg-block
@@ -126,7 +128,7 @@ layout: default
                 <div class="side-catalog">
                     <hr class="hidden-sm hidden-xs">
                     <h5>
-                        <a class="catalog-toggle" href="#">CATALOG</a>
+                        <a class="catalog-toggle" href="#">{{ ui.catalog }}</a>
                     </h5>
                     <ul class="catalog-body"></ul>
                 </div>
@@ -143,23 +145,23 @@ layout: default
                 {% if site.featured-tags %}
                 <section>
                     <hr class="hidden-sm hidden-xs">
-                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <h5><a href="{{ language_prefix }}/tags/">{{ ui.featured_tags }}</a></h5>
                     <div class="tags">
-        				{% for tag in site.tags %}
-                            {% if tag[1].size > {{site.featured-condition-size}} %}
-                				<a href="/tags/#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
-                                    {{ tag[0] }}
+                        {% for tag in site.tags %}{% assign tag_name = tag[0] %}
+                            {% if tag[1].size > site.featured-condition-size %}
+                                <a href="{{ language_prefix }}/tags/#{{ tag[0] }}" title="{% include tag-name.html tag=tag_name %}" rel="{{ tag[1].size }}">
+                                    {% include tag-name.html tag=tag_name %}
                                 </a>
                             {% endif %}
-        				{% endfor %}
-        			</div>
+                        {% endfor %}
+                    </div>
                 </section>
                 {% endif %}
 
                 <!-- Friends Blog -->
                 {% if site.friends %}
                 <hr>
-                <h5>FRIENDS</h5>
+                <h5>{{ ui.friends }}</h5>
                 <ul class="list-inline">
                     {% for friend in site.friends %}
                         <li><a href="{{friend.href}}">{{friend.title}}</a></li>
@@ -177,8 +179,8 @@ layout: default
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "{{site.disqus_username}}";
-    var disqus_identifier = "{{page.id}}";
-    var disqus_url = "{{site.url}}{{page.url}}";
+    var disqus_identifier = "{{article.id}}";
+    var disqus_url = "{{site.url}}{{article.url}}";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

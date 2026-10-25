@@ -1,0 +1,11 @@
+{%- assign preview_key = site.data.translation_keys[post.path] -%}
+{%- assign preview_en = site.data.en[preview_key] -%}
+<div class="post-preview">
+  <a href="{% include post-url.html post=post %}">
+    <h2 class="post-title">{% include post-title.html post=post %}</h2>
+    {% if post.subtitle %}<h3 class="post-subtitle">{% if english %}{{ preview_en.subtitle | escape }}{% else %}{{ post.subtitle }}{% endif %}</h3>{% endif %}
+    <div class="post-content-preview">{% if english %}{{ preview_en.body | markdownify | strip_html | truncate: 200 }}{% else %}{{ post.content | strip_html | truncate: 200 }}{% endif %}</div>
+  </a>
+  <p class="post-meta">{{ ui.posted_by }} {% if english and post.author == '浮光' %}Fuguang{% else %}{{ post.author | default: ui.site_title }}{% endif %} {{ ui.on }} {{ post.date | date: "%B %-d, %Y" }}</p>
+</div>
+<hr>

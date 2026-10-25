@@ -1,0 +1,23 @@
+{
+  "name": "Fuguang",
+  "short_name": "Fuguang",
+  "description": "Fuguang\u2019s literary notes",
+  "icons": [
+    {
+      "src": "/pwa/icons/pwa_icon_128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "/pwa/icons/pwa_icon_512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "background_color": "#fff",
+  "theme_color": "#000",
+  "start_url": "/en/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "lang": "en"
+}

@@ -1,0 +1,40 @@
+{%- assign english = false -%}
+{%- assign locale = 'zh' -%}
+{%- assign language_prefix = '' -%}
+{%- if page.lang == 'en' -%}
+  {%- assign english = true -%}
+  {%- assign locale = 'en' -%}
+  {%- assign language_prefix = '/en' -%}
+{%- endif -%}
+{%- assign ui = site.data.ui[locale] -%}
+{%- assign article = page -%}
+{%- if page.source_path -%}
+  {%- assign article = site.posts | where: 'path', page.source_path | first -%}
+{%- endif -%}
+{%- assign translation_key = site.data.translation_keys[article.path] -%}
+{%- assign en_post = site.data.en[translation_key] -%}
+{%- assign chinese_url = page.url -%}
+{%- assign english_url = '/en/' -%}
+{%- if translation_key -%}
+  {%- assign chinese_url = article.url -%}
+  {%- assign english_url = '/en/posts/' | append: translation_key | append: '/' -%}
+{%- elsif page.locale_page == 'about' or page.url == '/about/' or page.url == '/about.html' -%}
+  {%- assign chinese_url = '/about/' -%}
+  {%- assign english_url = '/en/about/' -%}
+{%- elsif page.locale_page == 'tags' or page.url == '/tags/' or page.url == '/tags.html' -%}
+  {%- assign chinese_url = '/tags/' -%}
+  {%- assign english_url = '/en/tags/' -%}
+{%- elsif page.locale_page == '404' or page.url == '/404.html' -%}
+  {%- assign chinese_url = '/404.html' -%}
+  {%- assign english_url = '/en/404.html' -%}
+{%- elsif page.locale_page == 'offline' or page.url == '/offline.html' -%}
+  {%- assign chinese_url = '/offline.html' -%}
+  {%- assign english_url = '/en/offline.html' -%}
+{%- else -%}
+  {%- assign page_number = page.page_number | default: paginator.page | default: 1 -%}
+  {%- assign chinese_url = '/' -%}
+  {%- if page_number > 1 -%}
+    {%- assign chinese_url = '/page' | append: page_number | append: '/' -%}
+    {%- assign english_url = '/en/page' | append: page_number | append: '/' -%}
+  {%- endif -%}
+{%- endif -%}

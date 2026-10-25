@@ -1,0 +1,5 @@
+<nav class="language-switch" aria-label="{{ ui.language }}">
+  <a href="{{ chinese_url | prepend: site.baseurl }}" lang="zh-CN" hreflang="zh-CN" data-language="zh"{% unless english %} aria-current="true"{% endunless %}>中文</a>
+  <span aria-hidden="true"> / </span>
+  <a href="{{ english_url | prepend: site.baseurl }}" lang="en" hreflang="en" data-language="en"{% if english %} aria-current="true"{% endif %}>English</a>
+</nav>

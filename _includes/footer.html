@@ -91,9 +91,9 @@
                     {% endif %}
                 </ul>
                 <p class="copyright text-muted">
-                    Copyright &copy; {{ site.title }} {{ site.time | date: '%Y' }}
+                    {{ ui.copyright }} &copy; {{ ui.site_title }} {{ site.time | date: '%Y' }}
                     <br>
-                    文学札记 · 浮光
+                    {% if english %}Literary Notes · Fuguang{% else %}文学札记 · 浮光{% endif %}
                 </p>
             </div>
         </div>
@@ -262,4 +262,3 @@
     });
 </script>
 {% endif %}
-
