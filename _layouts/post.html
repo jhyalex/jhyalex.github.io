@@ -41,7 +41,7 @@ layout: default
                     {% comment %} if article.subtitle {% endcomment %}
                     <h2 class="subheading">{% if english %}{{ en_post.subtitle | escape }}{% else %}{{ article.subtitle }}{% endif %}</h2>
                     {% comment %} endif {% endcomment %}
-                    <span class="meta">{{ ui.posted_by }} {% if article.author %}{% if english and article.author == '浮光' %}Fuguang{% else %}{{ article.author }}{% endif %}{% else %}{{ ui.site_title }}{% endif %} {{ ui.on }} {{ article.date | date: "%B %-d, %Y" }}</span>
+                    <span class="meta">{{ ui.posted_by }} {% if article.author %}{% if english and article.author == '浮光' %}Shimmer{% else %}{{ article.author }}{% endif %}{% else %}{{ ui.site_title }}{% endif %} {{ ui.on }} {{ article.date | date: "%B %-d, %Y" }}</span>
                 </div>
             </div>
         </div>

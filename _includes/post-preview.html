@@ -6,6 +6,6 @@
     {% if post.subtitle %}<h3 class="post-subtitle">{% if english %}{{ preview_en.subtitle | escape }}{% else %}{{ post.subtitle }}{% endif %}</h3>{% endif %}
     <div class="post-content-preview">{% if english %}{{ preview_en.body | markdownify | strip_html | truncate: 200 }}{% else %}{{ post.content | strip_html | truncate: 200 }}{% endif %}</div>
   </a>
-  <p class="post-meta">{{ ui.posted_by }} {% if english and post.author == '浮光' %}Fuguang{% else %}{{ post.author | default: ui.site_title }}{% endif %} {{ ui.on }} {{ post.date | date: "%B %-d, %Y" }}</p>
+  <p class="post-meta">{{ ui.posted_by }} {% if english and post.author == '浮光' %}Shimmer{% else %}{{ post.author | default: ui.site_title }}{% endif %} {{ ui.on }} {{ post.date | date: "%B %-d, %Y" }}</p>
 </div>
 <hr>
